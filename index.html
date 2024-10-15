@@ -25,7 +25,7 @@
             border: none;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             width: 35rem;
-            height: 18rem;
+            height: auto;
             background-color: #001427;
             border-radius: 13px;
         }
@@ -66,55 +66,21 @@
             transform: scale(1.2);
         }
 
-        /* Media queries for responsiveness */
-        @media (max-width: 768px) {
-            .card {
-                width: 90%;
-                height: auto;
-                padding: 30px;
-            }
-
-            .card h1 {
-                font-size: 22px;
-            }
-
-            #mau, #tidak {
-                padding: 8px 15px;
-            }
-
-            .button {
-                flex-direction: column;
-            }
-
-            #mau, #tidak {
-                margin: 5px 0;
-            }
+        .new-button {
+            margin-top: 20px;
+            text-align: center;
         }
 
-        @media (max-width: 576px) {
-            .card {
-                padding: 20px;
-            }
-
-            .card h1 {
-                font-size: 18px;
-            }
-
-            #mau, #tidak {
-                padding: 8px 10px;
-                font-size: 14px;
-            }
-        }
     </style>
 
-    <title>Happy first monthversary mas juwi !!</title>
+    <title>Happy first monthversary mas juwi !! </title>
   </head>
   <body>
     
     <div class="container"> 
         <div class="card">
-            <h1> udah sebulan aja nih juuu. juwi masih sayang acen gaa? </h1>
-            <div class="button">
+            <h1 id="messageBox"> udah sebulan aja nih juuu. juwi masih sayang acen gaa? </h1>
+            <div class="button" id="buttonContainer">
                 <button type="button" class="btn btn-outline-light" id="mau" onclick="mau()">masih. expirednya 100 tahun lagi nih.</button>
                 <button type="button" class="btn btn-outline-light" id="tidak" onclick="tidak()">emoh. udah expired dari lama.</button>
             </div>
@@ -126,9 +92,27 @@
 
     <script> 
         let pindah = 1;
+        
+        // When "mau" is clicked, change the text and buttons
         function mau() {
-            alert("click ok for more surprise!!");
-            location.replace("https://medium.com/@pepperbeer/happy-monthversarry-ju-84f28b1e8e8d");
+            // Change the text in the box
+            document.getElementById('messageBox').textContent = "yeaaay juwi masih sayang acen. pilih dong mau buka yang mana dulu nih juwii??";
+
+            // Replace the current buttons with two new options
+            document.getElementById('buttonContainer').innerHTML = `
+                <button type="button" class="btn btn-outline-light" onclick="option1()">a bunch of flowers!!</button>
+                <button type="button" class="btn btn-outline-light" onclick="option2()">another love letter hehe</button>
+            `;
+        }
+
+        function option1() {
+            // Redirect to a new link when "Let's celebrate!" is clicked
+            window.location.href = "https://pepperbeer.github.io/pepperbeer.github.io-flowers/";
+        }
+
+        function option2() {
+            // Redirect to a different link when "Plan something fun!" is clicked
+            window.location.href = "https://medium.com/@pepperbeer/happy-monthversarry-ju-84f28b1e8e8d";
         }
         
         function tidak() {
@@ -136,7 +120,7 @@
 
             if (pindah === 1) {
                 button.style.top = '200px';
-                button.style.left = '80x';
+                button.style.left = '80px';
                 pindah = 2;
             } 
             else if (pindah === 2) {
